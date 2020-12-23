@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    // NaN和任何值都不相等
+    console.log(10==NaN);   //false
+    console.log('as'==NaN); //false
+    console.log(NaN==NaN);  //false
+
+    console.log("分割线=============");
+
+    //isNaN([val]) 
+    console.log(isNaN(10));     //false
+
+    //注意，非数字类型判断处理流程
+
+    console.log(isNaN('as'));   //true
+    /* Number('a's')=>NaN   
+       isNaN(NaN)=>true  */    
+    console.log(isNaN('10'));   //false, 
+    /* Number('10')=>10
+    isNaN(10)=>false  */
+
+
+    //字符串转化为数字:
+    //只要字符串中包含任意一个非有效字符(第一个点除外)，结果都是NaN。
+    console.log("字符串转化为数字:");
+    console.log(Number('12.5'));        //12.5
+    console.log(Number('12.5px'));      //NaN
+    console.log(Number('12.5.5'));      //NaN
+    console.log(Number(''));            //0
+
+
+    //布尔类型转换成数字
+    console.log("布尔类型转换成数字:");
+    console.log(Number(false));         //=> 0
+    console.log(Number(true));          //=> 1
+    console.log(isNaN(false));          //=> false
+
+    //null 和 undefined 转换成数字
+    console.log("null和undefined 转换成数字:");
+    console.log(Number(null));          //=> 0
+    console.log(Number(undefined));     //=> NaN
+
+    //引用数据类型转换成数字
+    //先基于toString()方法转换成字符串，然后转换成数字。
+    console.log("引用数据类型转换成数字：");
+    console.log(Number({name:'10'}));      //NaN
+    console.log(Number({}));               //NaN
+    console.log(Number([]));               //0
+    console.log(Number([12]));             //12
+    console.log(Number([12,13]));          //NaN
+
+    //paeseInt/parseFloat转换成数字 
+    console.log("paeseInt/parseFloat转换成数字：");
+    console.log(parseInt("12.5"));         //12
+    console.log(parseFloat("12.5"));       //12.5
+    console.log(parseInt("12+3的值"));     //12
+    console.log(parseInt("width:12.5px")); //NaN w为非有效数字
+
+    //Number()与parseInt/parseFloat的区别
+    //Number()使用的是浏览器底层（因为为浏览器内置对象）处理机制，
+    //即上面提到的不同类型数据的Number转换规则。例：
+    console.log(Number(true));           //1
+    console.log(parseInt(true));         //NaN
+
+    </script>
+</body>
+</html>

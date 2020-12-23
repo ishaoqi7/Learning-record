@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        console.log(Boolean(0));        //false
+        console.log(Boolean(''));       //false
+        console.log(Boolean(' '));      //true
+        console.log(Boolean(null));     //false
+        console.log(Boolean(NaN));      //false
+        console.log(Boolean(undefined));    //false
+        console.log(Boolean([]));       //true
+        console.log(Boolean([12]));     //true
+
+        console.log(!1);        //false
+        console.log(!!1);       //true
+
+        if(!1){
+            console.log(1);     
+        }else{
+            console.log(2);     //2
+        }
+
+        if(!NaN){
+            console.log(NaN);   //NaN
+        }
+
+        if('3px'-3){
+            //=>NaN-3=>NaN
+            console.log(1);       
+        }
+    </script>
+</body>
+</html>

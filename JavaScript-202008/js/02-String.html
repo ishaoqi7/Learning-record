@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        //非实例不能直接，如直接数字12.toString()，需要()包裹。
+        let a=12;                                   
+        console.log(a.toString());        //'12'    
+        console.log((NaN).toString());    //'NaN'   
+        console.log(true.toString());    //'true'   
+        console.log(false.toString());    //'false' 
+
+        //null\undefinde禁止直接toString()
+        // console.log((null).toString());    //报错
+
+        //数组对象转换成字符串
+        console.log([].toString());         //''
+        console.log([12].toString());       //'12'
+        console.log([12,13].toString());    //'12,13'
+
+        //正则对象
+        console.log((/^$/).toString());     //'/^$/'
+
+        //普通对象.toString()的结果是"[object,object]"
+        console.log({}.toString());             //[object Object]
+        console.log({name:"12"}.toString());    //[object Object]
+
+        //===============字符串拼接===================
+        //四则运算中，除加法之外，其余都是数学运算。只有加法可能存在字符串拼接（一旦遇到字符串，就做字符串拼接）。
+        console.log('12'+10);       //1210
+        console.log('10'-10);       //0
+        console.log('10px'-10);     //NaN
+
+
+        //============练习题==========================
+        let b=10+null+true+[]+undefined+'珠峰'+null+[]+10+false;
+        console.log(b);     //'11undefined珠峰null10false'
+
+        let c = 100+true+21.2+undefined+'tencent'+[]+null+9+false;
+        console.log(c);     //'NaNtencentnull9false'
+    </script>
+</body>
+</html>

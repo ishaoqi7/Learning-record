@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //====================三目运算符============
+        let a = 10;
+        if (a >= 10) {
+            console.log(a);
+        } else {
+            console.log(1);
+        }
+        //使用三目运算符表示
+        a >= 10 ? console.log(a) : console.log('1'); //10
+
+        if (a > 0) {
+            if (a < 10) {
+                a++;
+                console.log(a);
+                console.log("hhhhhh");
+            } else {
+                a--;
+                console.log(a);
+            }
+        } else {
+            if (a > -10) {
+                a += 2;
+            }
+        }
+        //使用三目运算符
+
+        a > 0 ? (a < 10 ? (a++, console.log(a), console.log("hhhhhh")) : (a--, console.log(a))) : (a >= -10 ? a += 2 :
+            null);
+
+        //===================switch case===========
+        switch (a) {
+            case 1:
+                console.log('一');
+                break;
+            case 2:
+                console.log('二');
+                break;
+            case 10:
+                console.log('十');
+                break;
+            default:
+                console.log("木有满足的");
+        }
+    </script>
+</body>
+
+</html>

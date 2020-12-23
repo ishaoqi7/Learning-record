@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .box{
+            margin-top: 40px;
+        }
+        .box #inputBox{
+            width: 300px;
+            height:40px;
+            line-height: 40px;
+            border: 1px solid gray;
+            vertical-align:bottom;
+        }
+        .box #checkCode{
+            display: inline-block;
+            width: 100px;
+            height: 35px;
+            line-height: 40px;
+            font-size: large;
+            font-weight: bolder;
+            text-align: center;
+            margin-top: 10px;
+            border: 2px solid gray;
+            background-color: rgb(163, 207, 193);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" id="inputBox">
+        <input type="submit"  value="验证" onclick="checkInp()">
+        <br/>
+        <span id="checkCode"></span>
+        <button onclick="changeCode()">看不清，换一张</button>
+    </div>
+    <script type="text/javascript">
+    
+    let area='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let checkCode=document.getElementById('checkCode');
+    let inputCode=document.getElementById('inputBox');
+    // console.log(inputCode);
+    let result='';
+
+    function queryCode(){
+        result='';
+        //每循环一次都随机获取一个字符
+        for(let i=0;i<4;i++){
+            //area长度为62，索引0-61,范围(n,m)=>*(m-n)+m
+            let ran=Math.round(Math.random()*61);
+            result+=area.charAt(ran);
+        }
+        checkCode.innerHTML=result;
+    }
+    
+    changeCode= () => queryCode();           //更换验证码
+    //输入框失去焦点，验证码验证。
+    inputCode.onblur=function(){
+        let inpText=inputCode.value;         //获取输入内容
+        console.log(inpText);
+        if(inpText.toLowerCase()===result.toLowerCase()){   //需要都转成小写字符比较
+            inputCode.style.borderColor='green';            //正确边框变绿
+        }else{
+            inputCode.style.borderColor='red';              //错误变红，切更新验证码
+            queryCode()                     
+        }
+    }
+    queryCode();
+    
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .tab li{
+            display: block;
+            width: 100px;
+            height: 50px;
+            background-color:indianred;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="tabBox" id="tabBox">
+        <ul class="tab" id="tab">
+            <li>第一个页卡</li>
+            <li>第二个页卡</li>
+            <li>第三个页卡</li>
+        </ul>
+        <!-- 这是一个注释 -->
+        <div>
+            第一个展示内容
+            <ul class="news1"></ul>
+        </div>
+            第二个展示内容
+            <div>
+            <ul class="news2"></ul>
+        </div>
+            第三个展示内容
+            <div>
+            <ul class="news3"></ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+//=====================JS中的节点和描述节点间关系的属性===================
+/* 节点:Node（页面中所有的东西都是节点）。
+    标准浏览器（非IE6~8）中会将换行符、空格当作文本节点(#text)处理 。
+节点集合: Nodelist（ getElementsByName/ querySelectorA获取的都是节点集合）
+    
+    元素节点（元素标签）
+        node Type: 1
+        nodeName:大写的标签名
+        nodeValue:null
+    文本节点
+        node Type: 3
+        nodeName:'#text'
+        nodeValue:文本内容
+    注释节点
+        node Type: 8
+        nodeName:'#commen'
+        nodeValue:注释内容
+    文档节点 document document.getElementById
+        node Type: 9
+        nodeName:'#document'
+        nodeValue:null 
+    */
+    let tabBox=document.getElementById('tabBox');
+    console.log(tabBox.nodeType);                   // 1
+
+//==================描述这些节点之间关系的《属性》==============
+   /*  
+    childNodes:获取节点的所有子节点。
+    children：获取所有的《元素子节点》。（子元素集合）。
+    parentNode：获取父亲节点。
+    firstChild：获取第一个子节点。
+    lastChild:获取最后一个字节点。
+    firstElementChild/lastElementChild：获取第一个/最后一个《元素子节点》。（IE6~8不兼容）
+    previousSibling:获取上一个兄弟节点
+    nextSibling:获取下一个兄弟节
+    */
+    console.log(tabBox.childNodes);        //NodeList(11) [text, ul#tab.tab, text, comment,..., div, text]
+    console.log(tabBox.children);          //HTMLCollection(4) [ul#tab.tab, div, div, div, tab: ul#tab.tab]
+    console.log(tabBox.parentNode);            //#text  
+    console.log(tabBox.firstChild);        //#text  
+    console.log(tabBox.lastChild);         //#text
+    console.log(tabBox.firstElementChild);        //<ul class="tab"><li>...</ul> 元素后代内容也获取到了
+    console.log(tabBox.lastElementChild);         //<div>....<div>              元素后代内容也获取到了
+    console.log(tabBox.previousSibling);          //#text
+    console.log(tabBox.nextSibling);              //#text
+
+/*自定义children:获取context中的所有子元素节点
+    @params 
+        context
+    @return
+        [element Array]
+ */
+    function children(context){
+        let arr=[],
+            nodeList=context.childNodes;
+            
+        nodeList.forEach((item,i)=>{
+            item.nodeType===1? arr.push(item) : null ;
+        })
+
+        return arr;
+    }
+
+    let box=document.getElementById('tabBox');
+    console.log(children(box));
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+   
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+    //====================join=================
+
+    /* 
+     * join：将数组转换成字符串
+     * @params
+     * @return  
+     *      转换后的字符串,原数组不变
+     */
+    let ary=[10,20,30];
+    let res=ary.join('');
+    console.log(res);       //102030
+    
+    //什么都不写时，默认加','
+    res =ary.join();
+    console.log(res);       //10,20,30
+
+    res = ary.join('|');
+    console.log(res);       //10|20|30
+
+    res= ary.join('+');
+    console.log(res);       //10+20+30
+    console.log(eval(res)); //60
+
+    //====================concat=================
+
+    /* 
+     * concat：实现数组拼接
+     * @params
+            多个任意类型值
+     * @return  
+     *      拼接后的新数组,原数组不变
+     */
+     let ary1=[10,20,30];
+     let ary2=[40,50,60];
+     res=ary1.concat("吃饭了",ary2);
+     console.log(res);              // (7) [10, 20, 30, "吃饭了", 40, 50, 60]
+    
+
+    //====================forEach=================
+     /* 
+     * forEach：遍历数组中的每一项
+     * @params
+            回调函数
+     * @return  
+     *      原数组不变
+     */
+    ary = [12,14,15,24,54,41,54,16];
+    
+    ary.forEach(function(item,index){
+        //数组有多少项，函数默认执行多少次
+        //每次执行：item当前项，index当前索引
+        console.log(item,index);
+    })
+
+
+
+
+    </script>
+
+    
+</body>
+</html>
+
+

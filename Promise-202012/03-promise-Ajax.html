@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <input type="text" id="url" value="https://api.apiopen.top/getJoke"/> -->
+    <button id="btn">Get请求</button>
+
+<script type="text/javascript">
+
+    //var url=document.getElementById("url").baseURI;
+    
+    function sendAjax(url){
+        return new Promise((resolve,reject)=>{
+            
+            const btn=document.querySelector("#btn");
+
+            btn.addEventListener('click',function(){
+                //1、创建xhr实例
+                const xhr=new XMLHttpRequest();
+                //2、创建连接
+                xhr.open('GET',url);
+                //3、发送请求
+                xhr.send();
+                //4、根据状态码，处理返回结果
+                xhr.onreadystatechange=function(){
+                    if(xhr.readyState==4){
+                        if(xhr.status>=200 && xhr.status<300){
+                            //成功的结果
+                            resolve(xhr.response);
+                        }else{
+                            //失败的结果
+                            reject(xhr.status);
+                        }
+                    }
+                }
+            })
+        })
+    }
+
+    //使用自己封装的ajax
+    sendAjax("https://api.apiopen.top/getJoke").then(data=>{
+        console.log("请求成功："+data);
+    },reason=>{
+        console.log("请求失败，返回状态码："+reason);
+    })
+    
+  
+</script>
+</body>
+</html>

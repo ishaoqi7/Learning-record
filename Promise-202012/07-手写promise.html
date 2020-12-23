@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 和promise.js一起看 -->
+    <script src="./promise.js"></script>
+</head>
+<body>
+    <h3>此内容需与自写的promise.js一起看</h3>
+<script type="Text/javascript">
+ let p=new Promise((resolve,reject)=>{
+    //throw  'error';
+    //reject("error");
+    // resolve("ok");
+ //对于异步任务的处理
+ /* 由于是异步任务，则先执行then(),但promise实例状态还未改变。所以then中回调函数也不会执行
+    需要保证then中回调方法，在promise实例执行resolve，reject后(既异步任务执行完，改变状态后)执行。
+    所以需要在reject，resolve的定义中最后再执行then的回调方法。
+ */   
+    setTimeout(()=>{
+        //resolve("OK");
+        reject("error");
+    },1000)
+    
+ })
+
+ //无返回值时，then返回的promise的值为null
+//用try catch，对throw抛出的异常进行处理
+ let result=p.then(value=>{
+    //return "成功";
+    //throw '异常';
+    //console.log("success");
+ },reason=>{
+    
+    console.warn(reason);
+    return 'Failed';
+ })
+
+ console.log(p);
+ console.log(result);
+
+</script>
+</body>
+</html>

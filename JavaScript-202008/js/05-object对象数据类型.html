@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+//====================普通对象============
+       let person ={
+           name:'zhangsan',         
+           age:40,                  
+           height:'180cm',          
+           weight:'80kg',           
+           1:100                    
+       }    
+       //设置属性名属性值
+       person.GF='圆圆';        //属性名不存在，新增
+       person.name='qrqrq';     //属性名存在，则修改
+
+       //删除属性
+       delete person[1];
+
+       console.log(person.name);
+       console.log(person['age']);      //是字符串时，要加引号
+       console.log(person.sex);         //undefined
+       console.log(person[1]);          //是字符串时，要加引号
+
+    //====================数组============
+       let arry=[12,'哈哈',true,23];
+
+       console.log(arry.length);            //4
+       console.log(arry['length']);         //4
+       console.log(arry[2]);                //true
+       console.log(arry[arry.length-1]);    //23
+
+       //添加属性值
+       arry[arry.length]=100;
+    </script>
+</body>
+</html>

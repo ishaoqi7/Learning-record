@@ -1,0 +1,67 @@
+## Math对象的方法
+> js数据存储大小：正负2的53次方，即16位长度数字
+```javascript
+    console.dir(Math);
+    console.dir(Math.PI);               //3.141592653589793
+```
+### 1、Math.abs([number value])
+> 获取绝对值（绝对值永远正数）。
+```javascript
+    console.log(Math.abs(-12.5));       //12.5
+    console.log(Math.abs(12));          //12
+    console.log(Math.abs(0));           //0
+    //传递非数字类型值(默认先Number()转换成数字类型)
+    console.log(Math.abs('-1'));        //=>-1=>1
+    console.log(Math.abs('-1px'));      //=>NaN
+    console.log(Math.abs(true));        //1
+```
+### 2、Math.ceil()/Math.floor()
+> 向上/向下取整
+```javascript
+    console.log(Math.ceil(12.4));       //13
+    console.log(Math.ceil(12.9));       //13
+    console.log(Math.ceil(-12.1));      //-12
+    console.log(Math.ceil(-12.9));      //-12
+
+    console.log(Math.floor(12));        //12
+    console.log(Math.floor(12.1));      //12
+    console.log(Math.floor(12.9));      //12
+    console.log(Math.floor(-12.1));     //-13
+    console.log(Math.floor(-12.9));     //-13
+```
+### 3、Math.round()
+> 四舍五入
+```javascript
+    console.log(Math.round(12.4));      //12
+    console.log(Math.round(12.5));      //13
+    console.log(Math.round(-12.1));     //-12
+    console.log(Math.round(-12.5));     //-12
+    console.log(Math.round(-12.9));     //-13
+```
+### 4、Math.max/Math.min()([val1],[val2],...)
+> 获取一堆数中的最大/最小值（只接受单个值）
+```javascript
+    let mathAry=[11,27,41,57,27,86,53,43,52,99];
+    console.log(Math.max(...mathAry));          //98
+    console.log(Math.min(...mathAry));          //11
+```
+### 5、Math.sqrt()/Math.pow() 
+> sqrt()开方，pow(n,m)=>n的m次幂
+```javascript
+    console.log(Math.sqrt(-9));     //NaN   负数开不了平方
+    console.log(Math.sqrt(7));      //2.6457513110645907
+    console.log(Math.sqrt(9));      //3     
+    
+    console.log(Math.pow(2,10));    //2的10次方，1024
+```
+### 6、Math.random()
+> 0-1之间随机数：小数后有16位。
+```javascript
+    console.log(Math.random());     //0.42811871446274297
+```
+### 7、[n,m]间随机数公式
+> Math.round(Math.random()*(m-n)+n);    (包含n,也包含m (n<m) )
+```javascript
+    let num=Math.round(Math.random()*(77-4)+4);
+    console.log(num);
+```

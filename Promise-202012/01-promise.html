@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script type="Text/javascript">
+//promise内部同步调用，不进入事件队列。直接进入主线程执行。
+    var p= new Promise((resolve,reject)=>{
+        console.log(11111);
+    });
+    console.log(2222);
+
+    /*执行结果
+        11111
+        2222
+    */
+    
+</script>
+</body>
+</html>

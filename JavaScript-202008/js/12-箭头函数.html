@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+   
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+    // ==============1、箭头函数简写规则================= 
+
+/*     //改写箭头函数1
+    let sum=(n,m)=>{
+        return n + m;
+    }
+    //函数体只有一行return语句时，可以省去大括号和return
+    let sum = (n,m) => n + m;
+
+    //改写箭头函数2
+    function fn(n){
+        return function(m){
+            return n+m;
+        }
+    }
+    //改为
+    let fn = n => m => n + m;
+
+    //==================2、形参赋值默认值===============
+    //形参赋值默认值:当没有给形参传递实参的时候，执行默认值
+    
+    function sum(n,m){
+        if(typeof n ==="undefined"){
+            n=0;
+        }
+        if(typeof m==='undefined'){
+            m=0;
+        }
+        return n+m;
+    }
+
+    //使用箭头函数表示
+    let sum = (n=0,m=0) => m + n;
+
+
+    //==================3、箭头函数中无arguments、this===============
+   
+
+    let sum=()=>{
+        console.log(arguments);    //Uncaught ReferenceError: arguments is not defined
+    } */
+
+    //===================4、使用剩余运算符获取传递的实参集合(以数组形式接收)============
+
+    let sum1=(...arg)=>{            //arg为一个数组
+        console.log(eval(arg.join('+')));
+    }
+    sum1(1,4,5,1,11,22);             //44
+
+
+    </script>
+</body>
+</html>
+
+
