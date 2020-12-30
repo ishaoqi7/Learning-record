@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用xhr封装Ajax请求</title>
+</head>
+<body>
+    <button onclick="testGet()">GET</button>
+    <button onclick="testPost()">POST</button>
+    <button onclick="testPut()">PUT</button>
+    <button onclick="testDelete()">DELETE</button>
+    <script src="./res/axios.js"></script>
+    <script>
+        function testGet(){
+            axios.get('http://localhost:8000/posts').then(data=>{
+                console.log(data);
+            }
+        )}
+    </script>
+</body>
+</html>
