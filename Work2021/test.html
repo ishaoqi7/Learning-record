@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <input type="text" id="url" value="https://api.apiopen.top/getJoke"/> -->
+    <button id="btn">Post请求</button>
+		<button id="btn2" onclick="btnClick()">点击</button>
+<script src="./jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+
+    //var url=document.getElementById("url").baseURI;
+		let data1={
+									"SCHOOL":"一所大学",
+									"PROFESSIONAL":"测试专业",
+									"STARTDATE":"2017-01",
+									"ENDDATE":"2021-01",
+									"LEARNINGWAY":"全日制",
+									"STATE":"已毕业",
+									"EDUCATION":"成人大专",
+									"DEGREES":"学士",
+									"EDUSYSTME":"4年",
+									"CERTIFICATENUM":"513436200005219333"
+								};
+		let data2={
+			"STRATDATE":"2021-01",
+			"ENDDATE":"2022-01",
+			"TRAIN":"培训机构",
+			"TRAINCONTENT":"培训培训",
+			"TRAINWAY":"实践教学",
+			"TRAINTEACHER":"","TRAINDATE":"",
+			"TRAINMONEY":"","TRAINRESULT":"",
+			"TRAINCERTIFICATE":"无","CERTIFICATIONAUTHORITY":"无",
+			"OCCUPATIONQUALIFICATION":"",
+			"CERTIFICATENUM":"513436200005219333"}
+    
+    function sendAjax(url){
+      
+            
+            const btn=document.querySelector("#btn");
+
+            btn.addEventListener('click',function(){
+							$.ajax({
+								url:'http://210.5.144.126:8001/HRWorkAPI/Applicant/AddEducations',
+								type:'post',
+								contentType:'application/json',
+								processData: false,				//序列化处理 false
+								dataType:"json",
+								data:JSON.stringify(data1),
+								success: function(res){
+									console.log(res);
+								}
+							})
+							// console.log("bviuviov");
+        })
+    }
+
+    //使用自己封装的ajax
+    sendAjax()    
+		
+		
+		var btnClick = function(){
+			$.ajax({
+				url:'http://210.5.144.126:8001/HRWorkAPI/Applicant/AddEduTrains',
+				type:'post',
+				contentType:'Application/json',
+				dataType:'json',
+				processData: false,						//序列化处理 false
+				data:JSON.stringify(data2),
+				success:function(res){
+					console.log(res);
+				},
+				fail:function(error){
+					console.log(error)
+				}
+			})
+		}
+</script>
+</body>
+</html>
